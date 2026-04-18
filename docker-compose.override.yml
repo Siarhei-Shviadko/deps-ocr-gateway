@@ -1,0 +1,158 @@
+version: "3.4"
+
+services:
+  ocr-api-gateway:
+    build:
+      context: .
+      dockerfile: ./etc/deps-ocr-api-gateway/Dockerfile
+      target: develop
+      args:
+        REPOSITORY_URL: "${REPOSITORY_URL}"
+      cache_from:
+        - "ocr-api-gateway-dev:latest"
+    env_file:
+      - ./etc/deps-ocr-api-gateway/env/dev.env
+      - .env
+    volumes:
+      - ./src/deps_ocr_gateway:/app/deps_ocr_gateway
+      - ./src/tests:/app/tests
+      - ./src/poetry.lock:/app/poetry.lock
+      - ./src/pyproject.toml:/app/pyproject.toml
+      - ./src/setup.cfg:/app/setup.cfg
+      - ./vendors:/vendors
+      - ./src/requirements.txt:/app/requirements.txt
+    networks:
+      deps-network:
+        aliases:
+          - deps-ocr
+          - ocr
+    ports:
+      - "5010:8000"
+    stdin_open: true
+    tty: true
+
+  ocr-gateway-consumer:
+    build:
+      context: .
+      dockerfile: ./etc/deps-ocr-api-gateway/Dockerfile
+      target: develop
+      args:
+        REPOSITORY_URL: "${REPOSITORY_URL}"
+      cache_from:
+        - "ocr-api-gateway-dev:latest"
+    env_file:
+      - ./etc/deps-ocr-api-gateway/env/dev.env
+      - .env
+    networks:
+      - deps-network
+    volumes:
+      - ./src/deps_ocr_gateway:/app/deps_ocr_gateway
+      - ./src/tests:/app/tests
+      - ./src/poetry.lock:/app/poetry.lock
+      - ./src/pyproject.toml:/app/pyproject.toml
+      - ./src/setup.cfg:/app/setup.cfg
+      - ./vendors:/vendors
+    stdin_open: true
+    tty: true
+
+  tesseract-engin:
+    build:
+      context: .
+      dockerfile: ./etc/deps-ocr-api-gateway/engines/tesseract.Dockerfile
+      target: develop
+      args:
+        REPOSITORY_URL: "${REPOSITORY_URL}"
+      cache_from:
+        - "tesseract-engin-dev:latest"
+    env_file:
+      - ./etc/deps-ocr-api-gateway/env/dev.env
+      - .env
+    networks:
+      - deps-network
+    volumes:
+      - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+      - ./engine_src/engines_tests:/app/engines_tests
+      - ./engine_src/tesseract_env/poetry.lock:/app/poetry.lock
+      - ./engine_src/tesseract_env/pyproject.toml:/app/pyproject.toml
+      - ./engine_src/tesseract_env/requirements.txt:/app/requirements.txt
+      - ./engine_src/engines_setup.cfg:/app/setup.cfg
+      - ./vendors:/vendors
+    stdin_open: true
+    tty: true
+
+  # aws-textract-engin:
+  #   build:
+  #     context: .
+  #     dockerfile: ./etc/deps-ocr-api-gateway/engines/aws_textract.Dockerfile
+  #     target: develop
+  #     args:
+  #       REPOSITORY_URL: "${REPOSITORY_URL}"
+  #     cache_from:
+  #       - "aws-textract-engin-dev:latest"
+  #   env_file:
+  #     - ./etc/deps-ocr-api-gateway/env/dev.env
+  #     - .env
+  #   networks:
+  #     - deps-network
+  #   volumes:
+  #     - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+  #     - ./engine_src/engines_tests:/app/engines_tests
+  #     - ./engine_src/poetry.lock:/app/poetry.lock
+  #     - ./engine_src/pyproject.toml:/app/pyproject.toml
+  #     - ./engine_src/engines_setup.cfg:/app/setup.cfg
+  #     - ./vendors:/vendors
+  #   stdin_open: true
+  #   tty: true
+  #
+  # gcp-vision-engin:
+  #   build:
+  #     context: .
+  #     dockerfile: ./etc/deps-ocr-api-gateway/engines/gcp_vision.Dockerfile
+  #     target: develop
+  #     args:
+  #       REPOSITORY_URL: "${REPOSITORY_URL}"
+  #     cache_from:
+  #       - "gcp-vision-engin-dev:latest"
+  #   env_file:
+  #     - ./etc/deps-ocr-api-gateway/env/dev.env
+  #     - .env
+  #   networks:
+  #     - deps-network
+  #   volumes:
+  #     - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+  #     - ./engine_src/engines_tests:/app/engines_tests
+  #     - ./engine_src/poetry.lock:/app/poetry.lock
+  #     - ./engine_src/pyproject.toml:/app/pyproject.toml
+  #     - ./engine_src/engines_setup.cfg:/app/setup.cfg
+  #     - ./vendors:/vendors
+  #   stdin_open: true
+  #   tty: true
+  #
+  # azure-form-recognizer-engin:
+  #   build:
+  #     context: .
+  #     dockerfile: ./etc/deps-ocr-api-gateway/engines/azure_form_recognizer.Dockerfile
+  #     target: develop
+  #     args:
+  #       REPOSITORY_URL: "${REPOSITORY_URL}"
+  #     cache_from:
+  #       - "azure-form-recognizer-engin-dev:latest"
+  #   env_file:
+  #     - ./etc/deps-ocr-api-gateway/env/dev.env
+  #     - .env
+  #   networks:
+  #     - deps-network
+  #   volumes:
+  #     - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+  #     - ./engine_src/engines_tests:/app/engines_tests
+  #     - ./engine_src/poetry.lock:/app/poetry.lock
+  #     - ./engine_src/pyproject.toml:/app/pyproject.toml
+  #     - ./engine_src/engines_setup.cfg:/app/setup.cfg
+  #     - ./vendors:/vendors
+  #   stdin_open: true
+  #   tty: true
+
+networks:
+  deps-network:
+    external: true
+

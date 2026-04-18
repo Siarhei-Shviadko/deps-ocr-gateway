@@ -1,0 +1,50 @@
+ocr_api_gateway:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway'
+  resources: {}
+
+ocr_api_gateway_consumer:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway'
+  resources: {}
+
+ocr_api_gateway_aws_textract:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-aws-textract'
+  resources: {}
+
+ocr_api_gateway_azure_form_recognizer:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-azure-form-recognizer'
+  resources: {}
+
+ocr_api_gateway_gcp_vision:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-gcp-vision'
+  resources: {}
+
+ocr_api_gateway_tesseract:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-tesseract'
+  resources: {}
+
+ocr_api_gateway_settings:
+  ENV: ins
+  PAID_ENGINES_RESTRICTION_ENABLED: 'false'
+  ENABLED_OCR_ENGINES: '["TESSERACT", "AWS_TEXTRACT"]'
+  SENTRY_ENABLED: "false"
+  SENTRY_TRACES_SAMPLE_RATE: "0.2"
+  AWS_TEXTRACT_ENABLED: 'true'
+  AZURE_FORM_RECOGNIZER: 'true'
+  GCP_VISION_ENABLED: 'true'
+
+helm:
+  helm_logs_job_enabled: false
+
+csi:
+  vault_namespace: 'k8s-ins'
+  roleName: 'k8s-ins'
+  vaultKubernetesMountPath: 'kubernetes-ins'
+
+service_account:
+  serviceAccountName: 'deps-insurance'

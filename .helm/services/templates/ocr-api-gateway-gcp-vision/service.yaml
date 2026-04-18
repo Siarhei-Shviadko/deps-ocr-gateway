@@ -1,0 +1,17 @@
+{{- if .Values.ocr_api_gateway_gcp_vision.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: gcp-vision-engin
+  labels:
+    {{- include "deps-ocr.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.ocr_api_gateway_gcp_vision.service.type }}
+  ports:
+    - port: {{ .Values.ocr_api_gateway_gcp_vision.service.port }}
+      targetPort: {{ .Values.ocr_api_gateway_gcp_vision.container.portname }}
+      protocol: {{ .Values.ocr_api_gateway_gcp_vision.service.protocol }}
+      name: {{ .Values.ocr_api_gateway_gcp_vision.service.portname }}
+  selector:
+    {{- include "deps-ocr-api-gateway-gcp-vision.selectorLabels" . | nindent 4 }}
+{{- end }}

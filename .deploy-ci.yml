@@ -1,0 +1,277 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+manual-deploy-dev-k3s-hu:
+  extends:
+    - .deploy_features
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HU_API_URL"
+    K8S_CI_TOKEN: "$K3S_HU_CI_TOKEN_DEV"
+    ADDITIONAL_VALUES: "$VAULT_DEV_VALUES"
+    NAMESPACE: $K8S_DEV_NAMESPACE
+    TARGET_VERSION: "dev-x01"
+    ENVIRONMENT: "development"
+    ENVIRONMENT_URL: $DEV_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_DEV
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_DEV
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_DEV
+  when: manual
+  except:
+    variables:
+      - ($CI_COMMIT_BRANCH =~ /release-*/ || $CI_COMMIT_BRANCH == $DEPLOY_DEV_BRANCH || $CI_COMMIT_BRANCH == $DEPLOY_STABLE_BRANCH)
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/rollback.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/environment.gitlab-ci.yml'
+
+deploy-dev-k3s-hu:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HU_API_URL"
+    K8S_CI_TOKEN: "$K3S_HU_CI_TOKEN_DEV"
+    ADDITIONAL_VALUES: "$VAULT_DEV_VALUES"
+    NAMESPACE: $K8S_DEV_NAMESPACE
+    TARGET_VERSION: "dev-x01"
+    ENVIRONMENT: "development"
+    ENVIRONMENT_URL: $DEV_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_DEV
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_DEV
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_DEV
+  when: manual
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $DEPLOY_DEV_BRANCH
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/notify.gitlab-ci.yml'
+
+
+deploy-qa-k3s-heavy:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HEAVY_QA_API_URL"
+    K8S_CI_TOKEN: "$K3S_HEAVY_CI_TOKEN_QA"
+    ADDITIONAL_VALUES: "--values .helm/values.qa.yaml $VAULT_QA_VALUES"
+    NAMESPACE: $K8S_QA_NAMESPACE
+    TARGET_VERSION: "qa-x01"
+    ENVIRONMENT: "testing"
+    ENVIRONMENT_URL: $QA_K3S_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_QA
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_QA
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_QA
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $DEPLOY_DEV_BRANCH
+
+manual-deploy-qa-k3s-heavy:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HEAVY_QA_API_URL"
+    K8S_CI_TOKEN: "$K3S_HEAVY_CI_TOKEN_QA"
+    ADDITIONAL_VALUES: "--values .helm/values.qa.yaml $VAULT_QA_VALUES"
+    NAMESPACE: $K8S_QA_NAMESPACE
+    TARGET_VERSION: "qa-x01"
+    ENVIRONMENT: "testing"
+    ENVIRONMENT_URL: $QA_K3S_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_QA
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_QA
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_QA
+  when: manual
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /presale*/
+
+deploy-perf-k8s-heavy:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K8S_HEAVY_PERF_API_URL"
+    K8S_CI_TOKEN: "$K8S_HEAVY_CI_TOKEN_PERF"
+    ADDITIONAL_VALUES: "--values .helm/values.perf.yaml $VAULT_PERF_VALUES"
+    NAMESPACE: $K8S_PERF_NAMESPACE
+    TARGET_VERSION: "perf-x01"
+    ENVIRONMENT: "performance"
+    ENVIRONMENT_URL: $PERF_K8S_INSTANCE_URL
+  when: manual
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $DEPLOY_DEV_BRANCH
+
+
+deploy-demo-k3s-hu:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$DEMO_K8S_API_URL"
+    K8S_CI_TOKEN: "$DEMO_K8S_CI_TOKEN"
+    ADDITIONAL_VALUES: "--values .helm/values.demo.yaml $VAULT_DEMO_VALUES"
+    NAMESPACE: $K8S_DEMO_NAMESPACE
+    TARGET_VERSION: "demo-x01"
+    ENVIRONMENT: "demo"
+    ENVIRONMENT_URL: $DEMO_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_DEMO
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_DEMO
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_DEMO
+  when: manual
+  only:
+    variables:
+      - ($CI_COMMIT_BRANCH == $DEPLOY_STABLE_BRANCH || $CI_COMMIT_BRANCH =~ /presale*/ )
+
+
+deploy-ds-heavy-k3s:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$HEAVY_K3S_API_URL_DS"
+    K8S_CI_TOKEN: "$HEAVY_K3S_CI_TOKEN_DS"
+    ADDITIONAL_VALUES: "--values .helm/values.ds.yaml $VAULT_DS_VALUES"
+    NAMESPACE: $K8S_DS_NAMESPACE
+    TARGET_VERSION: "ds-x01"
+    ENVIRONMENT: "ds-sandbox"
+    ENVIRONMENT_URL: $DS_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_DS
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_DS
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_DS
+  when: manual
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $DEPLOY_STABLE_BRANCH
+
+deploy-ins-heavy-k3s:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HEAVY_INS_API_URL"
+    K8S_CI_TOKEN: "$K3S_HEAVY_CI_TOKEN_INS"
+    ADDITIONAL_VALUES: "--values .helm/values.ins.yaml $VAULT_INS_VALUES"
+    NAMESPACE: $K8S_INS_NAMESPACE
+    TARGET_VERSION: "insurance-x01"
+    ENVIRONMENT: "insurance"
+    ENVIRONMENT_URL: $INS_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_INS
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_INS
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_INS
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /release-*/
+
+manual-deploy-ins-heavy-k3s:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HEAVY_INS_API_URL"
+    K8S_CI_TOKEN: "$K3S_HEAVY_CI_TOKEN_INS"
+    ADDITIONAL_VALUES: "--values .helm/values.ins.yaml $VAULT_INS_VALUES"
+    NAMESPACE: $K8S_INS_NAMESPACE
+    TARGET_VERSION: "insurance-x01"
+    ENVIRONMENT: "insurance"
+    ENVIRONMENT_URL: $INS_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_INS
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_INS
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_INS
+  when: manual
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH == $DEPLOY_STABLE_BRANCH
+
+deploy-other-k3s-hu:
+  extends:
+    - .deploy_features
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HU_API_URL_OTHER"
+    K8S_CI_TOKEN: "$K3S_HU_CI_TOKEN_OTHER"
+    ADDITIONAL_VALUES: "--values .helm/values.other.yaml"
+    NAMESPACE: $K8S_NAMESPACE_OTHER
+    TARGET_VERSION: "other-x01"
+    ENVIRONMENT: "other"
+    ENVIRONMENT_URL: $OTHER_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_OTHER
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_OTHER
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_OTHER
+  when: manual
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/notify.gitlab-ci.yml'
+
+deploy-presale-heavy-k3s:
+  extends:
+    - .deploy
+  variables:
+    K8S_API_ENDPOINT: "$K3S_HEAVY_PRESALE_API_URL"
+    K8S_CI_TOKEN: "$K3S_HEAVY_CI_TOKEN_PRESALE"
+    ADDITIONAL_VALUES: "--values .helm/values.presale.yaml $VAULT_DS_VALUES"
+    NAMESPACE: $K8S_PRESALE_NAMESPACE
+    TARGET_VERSION: "presale-x01"
+    ENVIRONMENT: "presale"
+    ENVIRONMENT_URL: $PRESALE_INSTANCE_URL
+    VAULT_ENABLE: $VAULT_ENABLE_PRESALE
+    DATABASE_REQUIRE_SECURE_TRANSPORT: $DATABASE_REQUIRE_SECURE_TRANSPORT_PRESALE
+    SERVICE_EXTERNAL_URL: $SERVICE_EXTERNAL_URL_PRESALE
+  when: manual
+  only:
+    variables:
+      - ($CI_COMMIT_BRANCH == $DEPLOY_STABLE_BRANCH || $CI_COMMIT_BRANCH =~ /presale*/ )
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/rollback.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/environment.gitlab-ci.yml'
+
+.deploy:
+  stage: deploy
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/notify.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/environment.gitlab-ci.yml'
+  needs: ["ci"]
+
+.deploy_features:
+  stage: deploy
+  trigger:
+    include:
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/pipeline.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/notify.gitlab-ci.yml'
+      - project: 'epm-deps/deps-core'
+        ref: 0.7.13
+        file: '/shared/ci/deploy/environment.gitlab-ci.yml'
+  needs: ["build"]

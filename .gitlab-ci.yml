@@ -1,0 +1,38 @@
+include:
+- project: 'epm-deps/deps-pipelines'
+  ref: 0.8.6-push-generator
+  file: '/shared/python.gitlab-ci.yml'
+- local: .build-ci.yml
+
+
+stages:
+- build
+- tests
+- generate
+- deploy
+
+ci:
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: src/tests/coverage.xml
+
+
+helmlint:
+  script:
+  - helm lint .helm/services
+  - helm template $CI_PROJECT_NAME .helm/services --output-dir chart
+
+generate-config:
+  image: $REPOSITORY_PROXY_URL/docker-proxy/node:20.5.0-slim
+  stage: generate
+  script:
+  - node ./push-generate.js
+  artifacts:
+    paths:
+    - push-gitlab-ci.yml
+  after_script:
+  - cat ./push-gitlab-ci.yml
+
+

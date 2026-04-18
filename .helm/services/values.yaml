@@ -1,0 +1,480 @@
+# Default values for deps-ocr-api-gateway.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Secrets declaration
+# Precreate them before deploy
+# kubectl create secret generic gcp-vision-auth-key --from-literal=gcp-vision-auth-key='<gcp-vision-auth-key>'
+# kubectl create secret generic keycloak-certs-endpoint --from-literal=keycloak-certs-endpoint='<https://KEYCLOAK_URL/auth/realms/Test/protocol/openid-connect/certs>'
+# kubectl create secret generic ocr-aws-credentials \
+#   --from-literal=aws-access-key-id='<aws-access-key-id>' \
+#   --from-literal=aws-secret-access-key='<aws-secret-access-key>' \
+#   --from-literal=aws-region-name='<aws-region-name>'
+
+secrets:
+  gcp_vision_auth_key:
+    secretName: gcp-vision-auth-key
+  keycloak_certs_endpoint:
+    secretName: keycloak-certs-endpoint
+  ocr_aws_credentials:
+    secretName: ocr-aws-credentials
+  ocr_azure_credentials:
+    secretName: azure-credentials
+  auth_enabled:
+    secretName: auth-enabled
+  message_broker:
+    secretName: message-broker
+  kafka_secrets:
+    secretName: kafka-secrets
+  common_secret:
+    secretName: common-secret
+  deps_ocr:
+    secretName: deps-ocr-api-gateway
+
+env: ""
+registry: ""
+
+helm_logs_job:
+  serviceAccountName: gitlab-ci
+  image:
+    path: '/base/kubernetes-helm'
+    pullPolicy: IfNotPresent
+    tag: "0.1.1"
+  resources: {}
+
+ocr_api_gateway:
+  replicaCount: 1
+  podAnnotations: {}
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway'
+    tag: ''
+    pullPolicy: IfNotPresent
+  imagePullSecrets: 'artifactory'
+  container:
+    portname: 'ocr-cn-prt'
+    port: 8000
+    protocol: TCP
+  service:
+    type: ClusterIP
+    portname: 'ocr-svc-prt'
+    port: 8000
+    protocol: TCP
+    enabled: true
+  resources: {}
+  #    limits:
+  #      cpu: 0.5
+  #      memory: 1500Mi
+  #    requests:
+  #      cpu: 0.25
+  #      memory: 800Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  env:
+    INSTALL_DEV_DEPENDENCIES: true
+
+ocr_api_gateway_consumer:
+  replicaCount: 1
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway'
+    pullPolicy: IfNotPresent
+    tag: ''
+  imagePullSecrets: artifactory
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+ocr_api_gateway_aws_textract:
+  replicaCount: 1
+  podAnnotations: {}
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway-aws-textract'
+    tag: ''
+    pullPolicy: IfNotPresent
+  imagePullSecrets: 'artifactory'
+  container:
+    portname: 'ocr-cn-prt'
+    port: 8000
+    protocol: TCP
+  service:
+    type: ClusterIP
+    portname: 'ocr-svc-prt'
+    port: 8000
+    protocol: TCP
+    enabled: true
+  env:
+    INSTALL_DEV_DEPENDENCIES: true
+
+ocr_api_gateway_azure_form_recognizer:
+  replicaCount: 1
+  podAnnotations: {}
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway-azure-form-recognizer'
+    tag: ''
+    pullPolicy: IfNotPresent
+  imagePullSecrets: 'artifactory'
+  container:
+    portname: 'ocr-cn-prt'
+    port: 8000
+    protocol: TCP
+  service:
+    type: ClusterIP
+    portname: 'ocr-svc-prt'
+    port: 8000
+    protocol: TCP
+    enabled: true
+  env:
+    INSTALL_DEV_DEPENDENCIES: true
+
+ocr_api_gateway_gcp_vision:
+  replicaCount: 1
+  podAnnotations: {}
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway-gcp-vision'
+    tag: ''
+    pullPolicy: IfNotPresent
+  imagePullSecrets: 'artifactory'
+  container:
+    portname: 'ocr-cn-prt'
+    port: 8000
+    protocol: TCP
+  service:
+    type: ClusterIP
+    portname: 'ocr-svc-prt'
+    port: 8000
+    protocol: TCP
+    enabled: true
+  env:
+    INSTALL_DEV_DEPENDENCIES: true
+
+ocr_api_gateway_tesseract:
+  replicaCount: 1
+  podAnnotations: {}
+  image:
+    path: '/deps-dev-x01/deps-ocr-api-gateway-tesseract'
+    tag: ''
+    pullPolicy: IfNotPresent
+  imagePullSecrets: 'artifactory'
+  container:
+    portname: 'ocr-cn-prt'
+    port: 8000
+    protocol: TCP
+  service:
+    type: ClusterIP
+    portname: 'ocr-svc-prt'
+    port: 8000
+    protocol: TCP
+    enabled: true
+  env:
+    INSTALL_DEV_DEPENDENCIES: true
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+
+ocr_api_gateway_settings:
+  ENV: development
+  PROJECT_VERSION: '0.2.0'
+  WORKERS: '1'
+  RELOAD: 'false'
+  LOG_LEVEL: 'info'
+  MAX_REQUESTS: '1000'
+  TIMEOUT: '600'
+  OMP_THREAD_LIMIT: '2'
+  OCR_ENGINES_PREINIT: 'false'
+  OCR_ENABLE_CUDA_GPU: 'false'
+  SENTRY_ENABLED: 'false'
+  SENTRY_TRACE_ENABLED: 'false'
+  SENTRY_TRACES_SAMPLE_RATE: '1.0'
+
+  DEBUG: 'false'
+  RABBITMQ_PORT: '5672'
+
+  VERIFY_SSL: 'false'
+  PAID_ENGINES_RESTRICTION_ENABLED: 'false'
+  ENABLED_OCR_ENGINES: '["TESSERACT"]'
+  PRIVILEGED_GROUP: 'deps-admins'
+
+  # Auth
+  AUTH_VERIFY_SSL: false
+
+  DOCUMENTATION_ENABLED: "true"
+
+  # Kafka
+  KAFKA_GROUP_ID: 'ocr'
+  KAFKA_SECURITY_ENABLED: false
+  KAFKA_ENABLE_AUTO_COMMIT: false
+  KAFKA_ENABLE_AUTO_OFFSET_STORE: true
+  KAFKA_MAX_POLL_INTERVAL_MS: 300000
+
+  #engine_urls
+  TESSERACT_URL: http://tesseract-engin:8000
+  AWS_TEXTRACT_URL: http://aws-textract-engin:8000
+  GCP_VISION_URL: http://gcp-vision-engin:8000
+  AZURE_FORM_RECOGNIZER_URL: http://azure-form-recognizer-engin:8000
+  FILE_STORAGE_URL: 'http://file-storage-nginx:8000/api/storage/v1/file'
+  OCR_GATEWAY_URL: http://ocr:8000
+
+  ## List of enabled OCR engines
+  TESSERACT_ENABLED: true
+  GCP_VISION_ENABLED: false
+  AWS_TEXTRACT_ENABLED: false
+  AZURE_FORM_RECOGNIZER_ENABLED: true
+
+  ## Engine timeouts
+  TESSERACT_TIMEOUT: 60
+  GCP_VISION_TIMEOUT: 60
+  AWS_TEXTRACT_TIMEOUT: 60
+  AZURE_FORM_RECOGNIZER_TIMEOUT: 60
+
+  # Azure Service Bus
+  ASB_SUBSCRIPTION_STRATEGY: 'no_preparation'
+  ASB_TOPIC_NAME: 'deps-topic'
+  message_broker_asb_without_manage_permission: false
+
+helm:
+  helm_logs_job_enabled: false
+
+csi:
+  csi_default_name: deps-ocr-api-gateway
+  vault_namespace: 'k8s-dev'
+  roleName: 'k8s-dev'
+  vaultKubernetesMountPath: 'kubernetes-dev'
+
+secrets_location:
+  secrets_default_path: "/mnt/secrets-store"
+
+service_account:
+  serviceAccountName: 'deps-develop'
+
+secret_project_id:
+  id: ""
+
+azure_kv_settings:
+  keyvaultName: ""
+  tenantId: ""
+  userAssignedIdentityID: ""
+  resourceGroup: ""
+  subscriptionId: ""
+
+vault_settings:
+  enabled: false
+  hashicorp_vault: false
+  azure_key_vault: false
+  gcp_secret_manager: false
+  aws_secret_manager: false
+  aws_secret_manager_region: ''
+
+vault_enabled:
+  env:
+  - name: GCP_VISION_AUTH_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: gcp-vision-auth-key
+  - name: AUTH_CERTS_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: keycloak-certs-endpoint
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-access-key-id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-secret-access-key
+  - name: AWS_REGION_NAME
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-region-name
+  - name: AZURE_FORM_RECOGNIZER_API_URL
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: azure-form-recognizer-api
+  - name: AZURE_FORM_RECOGNIZER_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: azure-form-recognizer-key
+  - name: AUTH_ENABLED
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: auth-enabled
+  - name: MESSAGING_DRIVER
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: message-broker-driver
+  - name: MESSAGE_BROKER_CONNECTION_STRING
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: message-broker-connection-string
+
+vault_disabled:
+  env:
+  - name: GCP_VISION_AUTH_KEY
+    valueFrom:
+      secretKeyRef:
+        name: gcp-vision-auth-key
+        key: gcp-vision-auth-key
+  - name: AUTH_CERTS_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-certs-endpoint
+        key: keycloak-certs-endpoint
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-access-key-id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-secret-access-key
+  - name: AWS_REGION_NAME
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-region-name
+  - name: AZURE_FORM_RECOGNIZER_API_URL
+    valueFrom:
+      secretKeyRef:
+        name: azure-credentials
+        key: azure-form-recognizer-api
+  - name: AZURE_FORM_RECOGNIZER_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: azure-credentials
+        key: azure-form-recognizer-key
+  - name: AUTH_ENABLED
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: auth-enabled
+  - name: MESSAGING_DRIVER
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: message-broker-driver
+  - name: MESSAGE_BROKER_CONNECTION_STRING
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: message-broker-connection-string
+
+vault_enabled_consumer:
+  env:
+  - name: GCP_VISION_AUTH_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: gcp-vision-auth-key
+  - name: AUTH_CERTS_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: keycloak-certs-endpoint
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-access-key-id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-secret-access-key
+  - name: AWS_REGION_NAME
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: aws-region-name
+  - name: AZURE_FORM_RECOGNIZER_API_URL
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: azure-form-recognizer-api
+  - name: AZURE_FORM_RECOGNIZER_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: azure-form-recognizer-key
+  - name: AUTH_ENABLED
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: auth-enabled
+  - name: MESSAGING_DRIVER
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: message-broker-driver
+  - name: MESSAGE_BROKER_CONNECTION_STRING
+    valueFrom:
+      secretKeyRef:
+        name: deps-ocr-api-gateway
+        key: message-broker-connection-string
+
+vault_disabled_consumer:
+  env:
+  - name: GCP_VISION_AUTH_KEY
+    valueFrom:
+      secretKeyRef:
+        name: gcp-vision-auth-key
+        key: gcp-vision-auth-key
+  - name: AUTH_CERTS_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-certs-endpoint
+        key: keycloak-certs-endpoint
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-access-key-id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-secret-access-key
+  - name: AWS_REGION_NAME
+    valueFrom:
+      secretKeyRef:
+        name: ocr-aws-credentials
+        key: aws-region-name
+  - name: AZURE_FORM_RECOGNIZER_API_URL
+    valueFrom:
+      secretKeyRef:
+        name: azure-credentials
+        key: azure-form-recognizer-api
+  - name: AZURE_FORM_RECOGNIZER_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: azure-credentials
+        key: azure-form-recognizer-key
+  - name: AUTH_ENABLED
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: auth-enabled
+  - name: MESSAGING_DRIVER
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: message-broker-driver
+  - name: MESSAGE_BROKER_CONNECTION_STRING
+    valueFrom:
+      secretKeyRef:
+        name: common-secret
+        key: message-broker-connection-string

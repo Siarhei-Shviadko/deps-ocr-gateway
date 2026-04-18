@@ -1,0 +1,47 @@
+ocr_api_gateway:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway'
+  resources: {}
+
+ocr_api_gateway_consumer:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway'
+  resources: {}
+
+ocr_api_gateway_aws_textract:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-aws-textract'
+  resources: {}
+
+ocr_api_gateway_azure_form_recognizer:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-azure-form-recognizer'
+  resources: {}
+
+ocr_api_gateway_gcp_vision:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-gcp-vision'
+  resources: {}
+
+ocr_api_gateway_tesseract:
+  image:
+    path: '/deps-platform/deps-ocr-api-gateway-tesseract'
+  resources: {}
+
+ocr_api_gateway_settings:
+  ENV: qa
+  PAID_ENGINES_RESTRICTION_ENABLED: 'true'
+  ENABLED_OCR_ENGINES: '["TESSERACT"]'
+  SENTRY_ENABLED: "false"
+  SENTRY_TRACES_SAMPLE_RATE: "0.2"
+
+helm:
+  helm_logs_job_enabled: false
+
+csi:
+  vault_namespace: 'k8s-qa'
+  roleName: 'k8s-qa'
+  vaultKubernetesMountPath: 'kubernetes-qa'
+
+service_account:
+  serviceAccountName: 'deps-qa'

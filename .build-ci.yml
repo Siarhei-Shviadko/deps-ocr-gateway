@@ -1,0 +1,60 @@
+build:
+  stage: build
+  extends:
+  - .base
+  - .default-retry
+  script:
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name='' pull-diff || make version=ci tag=latest name='' pull-diff || true
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} hash=$(git rev-parse HEAD) build-prod
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name='' push-diff
+  - make version=ci tag=latest name='' push-diff
+  except: []
+
+build_aws_textract:
+  stage: build
+  extends:
+  - .base
+  - .default-retry
+  script:
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-aws-textract pull-diff || make version=ci tag=latest name=-aws-textract pull-diff || true
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} hash=$(git rev-parse HEAD) build-prod-aws-textract
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-aws-textract push-diff
+  - make version=ci tag=latest name=-aws-textract push-diff
+  except: []
+
+build_azure_form_recognizer:
+  stage: build
+  extends:
+  - .base
+  - .default-retry
+  script:
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-azure-form-recognizer pull-diff || make version=ci tag=latest name=-azure-form-recognizer pull-diff || true
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} hash=$(git rev-parse HEAD) build-prod-azure-form-recognizer
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-azure-form-recognizer push-diff
+  - make version=ci tag=latest name=-azure-form-recognizer push-diff
+  except: []
+
+build_gcp_vision:
+  stage: build
+  extends:
+  - .base
+  - .default-retry
+  script:
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-gcp-vision pull-diff || make version=ci tag=latest name=-gcp-vision pull-diff || true
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} hash=$(git rev-parse HEAD) build-prod-gcp-vision
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-gcp-vision push-diff
+  - make version=ci tag=latest name=-gcp-vision push-diff
+  except: []
+
+build_tesseract:
+  stage: build
+  extends:
+  - .base
+  - .default-retry
+  script:
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-tesseract pull-diff || make version=ci tag=latest name=-tesseract pull-diff || true
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} hash=$(git rev-parse HEAD) build-prod-tesseract
+  - make version=ci tag=${CI_COMMIT_SHORT_SHA:-latest} name=-tesseract push-diff
+  - make version=ci tag=latest name=-tesseract push-diff
+  except: []
+

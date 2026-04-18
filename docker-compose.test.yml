@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  ocr-api-gateway:
+    env_file: ./etc/deps-ocr-api-gateway/env/test.env
+    volumes:
+      - ./src/deps_ocr_gateway:/app/deps_ocr_gateway
+      - ./src/tests:/app/tests
+      - ./src/poetry.lock:/app/poetry.lock
+      - ./src/pyproject.toml:/app/pyproject.toml
+      - ./src/setup.cfg:/app/setup.cfg
+      - test-cache:/tmp/test_cache
+
+  tesseract-engin:
+    env_file: ./etc/deps-ocr-api-gateway/env/test.env
+    volumes:
+      - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+      - ./engine_src/engines_tests:/app/engines_tests
+      - ./engine_src/poetry.lock:/app/poetry.lock
+      - ./engine_src/pyproject.toml:/app/pyproject.toml
+      - ./engine_src/engines_setup.cfg:/app/setup.cfg
+      - engines-test-cache:/tmp/engines_test_cache
+
+volumes:
+  test-cache:
+  engines-test-cache:

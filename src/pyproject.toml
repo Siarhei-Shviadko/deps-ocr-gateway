@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "deps-ocr-gateway"
+version = "0.1.0"
+description = ""
+authors = []
+packages = [{include = "deps_ocr_gateway"}]
+
+[tool.poetry.dependencies]
+python = "~3.12"
+dependency-injector = "^4.48.0"
+pydantic = "^2.0"
+pydantic-settings = "^2.0"
+click = "^8.1.3"
+uvicorn = "^0.18.3"
+fastapi = "^0.120.0"
+gunicorn = "^22.0.0"
+authlib = "^1.6.7"
+httpx = "^0.25.0"
+azure-core = "^1.38.0"
+urllib3 = "^2.6.3"
+cryptography = "^46.0.5"
+python-multipart = "^0.0.22"
+starlette = "^0.49.1"
+
+async-rest-client = { path = "../vendors/deps-async-rest-client", develop = true }
+deps-message-flow = { path = "../vendors/deps-message-flow/src", extras = ["deps-asb", "deps-kafka", "deps-rabbitmq", "deps-integrations"], develop = true }
+
+[tool.poetry.group.dev.dependencies]
+bandit = "^1.7.5"
+isort = "~5.6.4"
+black = "^23.3.0"
+flake8 = "^6.1.0"
+wemake-python-styleguide = "^0.18"
+pytest = "^7.4.1"
+pytest-factoryboy = "^2.0.3"
+pytest-mock = "^3.4.0"
+requests-mock = "~1.9.3"
+coverage = "~5.3.1"
+mypy = "^1.5.1"
+wdb = "^3.3.0"
+ipdb = "^0.13.11"
+types-requests = "^2.32.4.20260107"
+
+
+[tool.poetry.extras]
+async-rest-client = ["async-rest-client"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+exclude = '''
+(
+    .venv
+    | vendors
+)
+'''
+

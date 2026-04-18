@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "azure-form-recognizer-engine"
+version = "0.3.0"
+description = "Azure Form Recognizer engine for extracting text from images."
+authors = []
+packages = [{include = "azure_form_recognizer_engine"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+azure-ai-documentintelligence = "~1.0.0b3"
+urllib3 = "^2.6.3"
+azure-core = "^1.38.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

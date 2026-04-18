@@ -1,0 +1,1602 @@
+{
+  "width": 2550,
+  "height": 3300,
+  "applied_transformations": [
+    {
+      "name": "rotation",
+      "parameters": {
+        "args": [],
+        "kwargs": {
+          "angle": 0.0
+        }
+      }
+    },
+    {
+      "name": "grayscaling",
+      "parameters": {
+        "args": [],
+        "kwargs": {}
+      }
+    }
+  ],
+  "dpi": 300.0,
+  "textlines": [
+    {
+      "id": 4,
+      "word_boxes": [
+        {
+          "content": "Celery",
+          "bbox": {
+            "left_top_point": {
+              "x": 233,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 400,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "is",
+          "bbox": {
+            "left_top_point": {
+              "x": 420,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 462,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "a",
+          "bbox": {
+            "left_top_point": {
+              "x": 479,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 508,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "task",
+          "bbox": {
+            "left_top_point": {
+              "x": 529,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 629,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "queue",
+          "bbox": {
+            "left_top_point": {
+              "x": 645,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 795,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "left_top_point": {
+              "x": 816,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 925,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "batteries",
+          "bbox": {
+            "left_top_point": {
+              "x": 945,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1158,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "included.",
+          "bbox": {
+            "left_top_point": {
+              "x": 1175,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1408,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "It\\u2019s",
+          "bbox": {
+            "left_top_point": {
+              "x": 1425,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1504,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "easy",
+          "bbox": {
+            "left_top_point": {
+              "x": 1525,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1633,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "to",
+          "bbox": {
+            "left_top_point": {
+              "x": 1654,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1704,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "use",
+          "bbox": {
+            "left_top_point": {
+              "x": 1720,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1804,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "so",
+          "bbox": {
+            "left_top_point": {
+              "x": 1825,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1879,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "that",
+          "bbox": {
+            "left_top_point": {
+              "x": 1900,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 1991,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "you",
+          "bbox": {
+            "left_top_point": {
+              "x": 2008,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 2104,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "can",
+          "bbox": {
+            "left_top_point": {
+              "x": 2120,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 2208,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "get",
+          "bbox": {
+            "left_top_point": {
+              "x": 2229,
+              "y": 237
+            },
+            "right_bottom_point": {
+              "x": 2304,
+              "y": 308
+            }
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "word_boxes": [
+        {
+          "content": "started",
+          "bbox": {
+            "left_top_point": {
+              "x": 233,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 400,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "without",
+          "bbox": {
+            "left_top_point": {
+              "x": 416,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 608,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "learning",
+          "bbox": {
+            "left_top_point": {
+              "x": 625,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 829,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "left_top_point": {
+              "x": 841,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 920,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "full",
+          "bbox": {
+            "left_top_point": {
+              "x": 933,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1020,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "complexities",
+          "bbox": {
+            "left_top_point": {
+              "x": 1037,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1354,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "of",
+          "bbox": {
+            "left_top_point": {
+              "x": 1370,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1425,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "left_top_point": {
+              "x": 1437,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1516,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "problem",
+          "bbox": {
+            "left_top_point": {
+              "x": 1529,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1737,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "it",
+          "bbox": {
+            "left_top_point": {
+              "x": 1754,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1787,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "solves.",
+          "bbox": {
+            "left_top_point": {
+              "x": 1804,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 1975,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "It\\u2019s",
+          "bbox": {
+            "left_top_point": {
+              "x": 1991,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 2070,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "designed",
+          "bbox": {
+            "left_top_point": {
+              "x": 2087,
+              "y": 308
+            },
+            "right_bottom_point": {
+              "x": 2308,
+              "y": 379
+            }
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "word_boxes": [
+        {
+          "content": "around",
+          "bbox": {
+            "left_top_point": {
+              "x": 233,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 408,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "best",
+          "bbox": {
+            "left_top_point": {
+              "x": 437,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 541,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "practices",
+          "bbox": {
+            "left_top_point": {
+              "x": 570,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 791,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "so",
+          "bbox": {
+            "left_top_point": {
+              "x": 820,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 875,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "that",
+          "bbox": {
+            "left_top_point": {
+              "x": 908,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1000,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "your",
+          "bbox": {
+            "left_top_point": {
+              "x": 1029,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1145,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "product",
+          "bbox": {
+            "left_top_point": {
+              "x": 1175,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1366,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "can",
+          "bbox": {
+            "left_top_point": {
+              "x": 1395,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1483,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "scale",
+          "bbox": {
+            "left_top_point": {
+              "x": 1512,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1637,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "left_top_point": {
+              "x": 1666,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 1758,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "integrate",
+          "bbox": {
+            "left_top_point": {
+              "x": 1787,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 2004,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "left_top_point": {
+              "x": 2037,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 2145,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "other",
+          "bbox": {
+            "left_top_point": {
+              "x": 2179,
+              "y": 379
+            },
+            "right_bottom_point": {
+              "x": 2308,
+              "y": 450
+            }
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "word_boxes": [
+        {
+          "content": "languages,",
+          "bbox": {
+            "left_top_point": {
+              "x": 233,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 500,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "left_top_point": {
+              "x": 520,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 608,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "it",
+          "bbox": {
+            "left_top_point": {
+              "x": 629,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 662,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "comes",
+          "bbox": {
+            "left_top_point": {
+              "x": 679,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 841,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "left_top_point": {
+              "x": 858,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 970,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "left_top_point": {
+              "x": 987,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1066,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "tools",
+          "bbox": {
+            "left_top_point": {
+              "x": 1083,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1204,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "left_top_point": {
+              "x": 1225,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1312,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "support",
+          "bbox": {
+            "left_top_point": {
+              "x": 1333,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1520,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "you",
+          "bbox": {
+            "left_top_point": {
+              "x": 1537,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1629,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "need",
+          "bbox": {
+            "left_top_point": {
+              "x": 1650,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1766,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "to",
+          "bbox": {
+            "left_top_point": {
+              "x": 1787,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1837,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "run",
+          "bbox": {
+            "left_top_point": {
+              "x": 1854,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 1937,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "such",
+          "bbox": {
+            "left_top_point": {
+              "x": 1954,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 2070,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "a",
+          "bbox": {
+            "left_top_point": {
+              "x": 2087,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 2116,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "system",
+          "bbox": {
+            "left_top_point": {
+              "x": 2133,
+              "y": 450
+            },
+            "right_bottom_point": {
+              "x": 2308,
+              "y": 520
+            }
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "word_boxes": [
+        {
+          "content": "in",
+          "bbox": {
+            "left_top_point": {
+              "x": 233,
+              "y": 525
+            },
+            "right_bottom_point": {
+              "x": 283,
+              "y": 591
+            }
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "production.",
+          "bbox": {
+            "left_top_point": {
+              "x": 300,
+              "y": 525
+            },
+            "right_bottom_point": {
+              "x": 583,
+              "y": 591
+            }
+          },
+          "confidence": 1.0
+        }
+      ]
+    }
+  ],
+  "textlines_v2": [
+    {
+      "id": 4,
+      "word_boxes": [
+        {
+          "content": "Celery",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.09297385870241652,
+            "w": 0.0655073652080461,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "is",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.16568580328249463,
+            "w": 0.01663368823481541,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "a",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.18952011906243618,
+            "w": 0.010951148139105903,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "task",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.20787699082318475,
+            "w": 0.03932908002068015,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "queue",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.25480542151756536,
+            "w": 0.0582990210040722,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.3205101412106184,
+            "w": 0.04364689347011591,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "batteries",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.3717563853544347,
+            "w": 0.08273317922953687,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "included.",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.46169016719643585,
+            "w": 0.09069869097541361,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "It\\u2019s",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.5594947166692198,
+            "w": 0.03153627682355494,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "easy",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.598231596105239,
+            "w": 0.043597551732281456,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "to",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.649428473578559,
+            "w": 0.018998339285258375,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "use",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.6756313548368567,
+            "w": 0.032860949148539625,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "so",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.7158980525397007,
+            "w": 0.02173709246068219,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "that",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.7452344707414216,
+            "w": 0.03658618802338644,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "you",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.7890293894250409,
+            "w": 0.03698511061325572,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "can",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.8332190420113358,
+            "w": 0.03385167340047998,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "get",
+          "bbox": {
+            "y": 0.07240426419961332,
+            "x": 0.8746701907488256,
+            "w": 0.029949113434436275,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "word_boxes": [
+        {
+          "content": "started",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.09297385870241652,
+            "w": 0.06513725230896394,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "without",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.16452614778007557,
+            "w": 0.07458296632455065,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "learning",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.24515817679610907,
+            "w": 0.08040997872944751,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.33161307939516954,
+            "w": 0.02975212047302645,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "full",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.36758659711850233,
+            "w": 0.03384750964594822,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "complexities",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.40748316945593344,
+            "w": 0.12502303777956494,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "of",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.5385471917445364,
+            "w": 0.020355573666641136,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.5651448567708334,
+            "w": 0.029752095540364582,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "problem",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.6011183495615043,
+            "w": 0.08141740786483864,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "it",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.6887575037339154,
+            "w": 0.013516743977864584,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "solves.",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.7083233104032629,
+            "w": 0.06720982969196793,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "It\\u2019s",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.7814793306238511,
+            "w": 0.03153627682355494,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "designed",
+          "bbox": {
+            "y": 0.09393202656447286,
+            "x": 0.8190565919564441,
+            "w": 0.08670143675959967,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "word_boxes": [
+        {
+          "content": "around",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.09297385870241652,
+            "w": 0.06827077678605623,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "best",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.17274234497469235,
+            "w": 0.039719712500478704,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "practices",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.22396389331692965,
+            "w": 0.0870510176116345,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "so",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.32290345235587725,
+            "w": 0.02173709246068219,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "that",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.3565330256044475,
+            "w": 0.03661089629129646,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "your",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.40504054150550195,
+            "w": 0.045004127851498675,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "product",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.46173958373225593,
+            "w": 0.07458291645922692,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "can",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.5482191696665646,
+            "w": 0.03385162353515625,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "scale",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.5939632739896089,
+            "w": 0.04926863526986315,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.6549554463305505,
+            "w": 0.03543070874183007,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "integrate",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.7022786358602686,
+            "w": 0.0852914448657067,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.7992936177970538,
+            "w": 0.043646868537454045,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "other",
+          "bbox": {
+            "y": 0.11571232959477588,
+            "x": 0.8548329671223959,
+            "w": 0.05045682620378881,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "word_boxes": [
+        {
+          "content": "languages,",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.09297385870241652,
+            "w": 0.10402224422280305,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.20449677012325113,
+            "w": 0.035430733674491934,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "it",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.24713207070344415,
+            "w": 0.01351676891052645,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "comes",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.2678575204088797,
+            "w": 0.06242714676202512,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "with",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.33788007848403034,
+            "w": 0.04325213463477839,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "the",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.38833678002450983,
+            "w": 0.030122195973115808,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "tools",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.42586472455193014,
+            "w": 0.047573862512127245,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "and",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.48063918967652164,
+            "w": 0.03543070874183007,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "support",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.5232744403913909,
+            "w": 0.07339861502055249,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "you",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.6038817860721762,
+            "w": 0.0366150101805045,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "need",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.6480961219937194,
+            "w": 0.045990837944878474,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "to",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.701291501911637,
+            "w": 0.0193684397180096,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "run",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.7278645334680096,
+            "w": 0.03266727223115809,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "such",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.7677363975375306,
+            "w": 0.044806536506204045,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "a",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.8197474760167739,
+            "w": 0.010951123206444036,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "system",
+          "bbox": {
+            "y": 0.13755582558988322,
+            "x": 0.8377096138748468,
+            "w": 0.06811852548636642,
+            "h": 0.021113723215430674,
+            "page": 1
+          },
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "word_boxes": [
+        {
+          "content": "in",
+          "bbox": {
+            "y": 0.1593992445203993,
+            "x": 0.09297385870241652,
+            "w": 0.019368464650671467,
+            "h": 0.02111373284850458,
+            "page": 1
+          },
+          "confidence": 1.0
+        },
+        {
+          "content": "production.",
+          "bbox": {
+            "y": 0.1593992445203993,
+            "x": 0.1183872721553628,
+            "w": 0.11184362025042764,
+            "h": 0.02111373284850458,
+            "page": 1
+          },
+          "confidence": 1.0
+        }
+      ]
+    }
+  ]
+}

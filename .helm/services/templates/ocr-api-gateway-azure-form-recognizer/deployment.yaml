@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocr-api-gateway-azure-form-recognizer
+  labels:
+    {{- include "deps-ocr.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.ocr_api_gateway_azure_form_recognizer.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "deps-ocr-api-gateway-azure-form-recognizer.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.ocr_api_gateway_azure_form_recognizer.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "deps-ocr-api-gateway-azure-form-recognizer.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- if .Values.ocr_api_gateway_azure_form_recognizer.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.ocr_api_gateway_azure_form_recognizer.imagePullSecrets }}
+      {{- end }}
+      {{- if .Values.podSecurityContext.runAsNonRoot }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
+      {{- if or .Values.vault_settings.hashicorp_vault .Values.vault_settings.gcp_secret_manager .Values.vault_settings.aws_secret_manager }}
+      serviceAccountName: {{ .Values.service_account.serviceAccountName }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.registry }}{{.Values.ocr_api_gateway_azure_form_recognizer.image.path}}:{{ .Values.ocr_api_gateway_azure_form_recognizer.image.tag | default "latest" }}"
+          imagePullPolicy: {{ .Values.ocr_api_gateway_azure_form_recognizer.image.pullPolicy }}
+          ports:
+          - name: {{ .Values.ocr_api_gateway_azure_form_recognizer.container.portname }}
+            containerPort: {{ .Values.ocr_api_gateway_azure_form_recognizer.container.port }}
+            protocol: {{ .Values.ocr_api_gateway_azure_form_recognizer.container.protocol }}
+          env:
+          - name: INSTALL_DEV_DEPENDENCIES
+            value: {{ .Values.ocr_api_gateway_azure_form_recognizer.env.INSTALL_DEV_DEPENDENCIES | quote }}
+          {{- if .Values.vault_settings.enabled }}
+          {{- toYaml .Values.vault_enabled.env | nindent 10 }}
+          {{ if .Values.ocr_api_gateway_settings.KAFKA_SECURITY_ENABLED }}
+          - name: KAFKA_SASL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: deps-ocr
+                key: kafka-sasl-username
+          - name: KAFKA_SASL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: deps-ocr
+                key: kafka-sasl-password
+          {{ end }}
+          {{ else }}
+          {{- toYaml .Values.vault_disabled.env | nindent 10 }}
+          {{ if .Values.ocr_api_gateway_settings.KAFKA_SECURITY_ENABLED }}
+          - name: KAFKA_SASL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: kafka-secrets
+                key: kafka-sasl-username
+          - name: KAFKA_SASL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: kafka-secrets
+                key: kafka-sasl-password
+          {{ end }}
+          {{- end }}
+          volumeMounts:
+          {{- if .Values.vault_settings.enabled }}
+          - name: secrets-store-inline
+            mountPath: {{ .Values.secrets_location.secrets_default_path }}
+            readOnly: true
+          {{- end }}
+          envFrom:
+          - configMapRef:
+              name: ocr-api-gateway-configmap
+              optional: false
+          resources:
+            {{- toYaml .Values.ocr_api_gateway_azure_form_recognizer.resources | nindent 12 }}
+      volumes:
+      {{- if .Values.vault_settings.enabled }}
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: {{ .Values.csi.csi_default_name }}
+      {{- end }}
+      {{- with .Values.ocr_api_gateway_azure_form_recognizer.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.ocr_api_gateway_azure_form_recognizer.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.ocr_api_gateway_azure_form_recognizer.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+

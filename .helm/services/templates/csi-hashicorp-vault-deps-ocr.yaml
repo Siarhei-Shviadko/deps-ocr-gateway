@@ -1,0 +1,83 @@
+{{- if .Values.vault_settings.hashicorp_vault }}
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: {{ .Values.csi.csi_default_name }}
+spec:
+  provider: vault
+  secretObjects:
+  - data:
+    - key: gcp-vision-auth-key
+      objectName: gcp-vision-auth-key
+    - key: keycloak-certs-endpoint
+      objectName: keycloak-certs-endpoint
+    - key: aws-access-key-id
+      objectName: aws-access-key-id
+    - key: aws-secret-access-key
+      objectName: aws-secret-access-key
+    - key: aws-region-name
+      objectName: aws-region-name
+    - key: azure-form-recognizer-api
+      objectName: azure-form-recognizer-api
+    - key: azure-form-recognizer-key
+      objectName: azure-form-recognizer-key
+    - key: auth-enabled
+      objectName: auth-enabled
+    - key: message-broker-connection-string
+      objectName: message-broker-connection-string
+    - key: message-broker-driver
+      objectName: message-broker-driver
+    - key: kafka-sasl-password
+      objectName: kafka-sasl-password
+    - key: kafka-sasl-username
+      objectName: kafka-sasl-username
+
+    secretName: {{ .Values.secrets.deps_ocr.secretName }}
+    type: Opaque
+  parameters:
+    roleName: {{ .Values.csi.roleName }}
+    vaultAddress: "https://vault_host"
+    vaultNamespace: "vault_namespace"
+    vaultSkipTLSVerify: "true"
+    #vaultCACertPath: ""
+    vaultKubernetesMountPath: {{ .Values.csi.vaultKubernetesMountPath }}
+    objects: |
+      - objectName: "gcp-vision-auth-key"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "gcp-vision-auth-key"
+      - objectName: "keycloak-certs-endpoint"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "keycloak-certs-endpoint"
+      - objectName: "aws-access-key-id"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "aws-access-key-id"
+      - objectName: "aws-secret-access-key"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "aws-secret-access-key"
+      - objectName: "aws-region-name"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "aws-region-name"
+      - objectName: "azure-form-recognizer-api"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "azure-form-recognizer-api"
+      - objectName: "azure-form-recognizer-key"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "azure-form-recognizer-key"
+      - objectName: "auth-enabled"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/common-secret"
+        secretKey: "auth-enabled"
+      - objectName: "message-broker-connection-string"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/common-secret"
+        secretKey: "message-broker-connection-string"
+      - objectName: "message-broker-driver"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/common-secret"
+        secretKey: "message-broker-driver"
+      - objectName: "kafka-sasl-password"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "kafka-sasl-password"
+      - objectName: "kafka-sasl-username"
+        secretPath: "{{ .Values.csi.vault_namespace }}/data/deps-ocr"
+        secretKey: "kafka-sasl-username"
+
+{{- end }}
+
