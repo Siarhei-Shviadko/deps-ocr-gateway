@@ -1,10 +1,9 @@
 [submodule "vendors/deps-async-rest-client"]
 	path = vendors/deps-async-rest-client
-	url = git@github.com:epam/deps-async-rest-client.git
-
+	url = git@github.com:Siarhei-Shviadko/deps-async-rest-client.git
 [submodule "vendors/deps-pipelines"]
 	path = vendors/deps-pipelines
-	url = git@github.com:epam/deps-pipelines.git
+	url = git@github.com:Siarhei-Shviadko/deps-pipelines.git
 [submodule "vendors/deps-message-flow"]
 	path = vendors/deps-message-flow
-	url = git@github.com:epam/deps-message-flow.git
+	url = git@github.com:Siarhei-Shviadko/deps-message-flow.git

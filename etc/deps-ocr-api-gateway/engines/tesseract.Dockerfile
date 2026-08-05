@@ -1,5 +1,5 @@
 ARG REPOSITORY_URL=""
-FROM ${REPOSITORY_URL}/base/deps-tesseract-5-3-2:3.12.11 AS python-base
+FROM ${REPOSITORY_URL:+$REPOSITORY_URL/base/}deps-tesseract-5-3-2:3.12.11 AS python-base
 
 
 ENV PIP_NO_CACHE_DIR=off \
