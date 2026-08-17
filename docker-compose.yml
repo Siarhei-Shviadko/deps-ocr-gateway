@@ -22,6 +22,6 @@ services:
   #   image: "gcp-vision-engin-dev"
   #   container_name: deps-gcp-vision-engin
   #
-  # azure-form-recognizer-engin:
-  #   image: "azure-form-recognizer-engin-dev"
-  #   container_name: deps-azure-form-recognizer-engin
+  azure-form-recognizer-engin:
+    image: "azure-form-recognizer-engin-dev"
+    container_name: deps-azure-form-recognizer-engin
