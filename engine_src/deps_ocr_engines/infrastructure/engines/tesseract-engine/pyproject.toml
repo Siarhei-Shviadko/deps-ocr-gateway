@@ -7,7 +7,7 @@ authors = []
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"
 numpy = ">=1.26,<2"
-tesserocr = "2.5.2"
+tesserocr = "2.11.0"
 Pillow = "^12.1.1"
 click = "^8.1.3"
 

@@ -1,5 +1,5 @@
 ARG REPOSITORY_URL=""
-FROM ${REPOSITORY_URL:+$REPOSITORY_URL/base/}deps-tesseract-5-3-2:3.12.11 AS python-base
+FROM ${REPOSITORY_URL:+$REPOSITORY_URL/base/}jitesoft/tesseract-ocr:5.5.2 AS python-base
 
 
 ENV PIP_NO_CACHE_DIR=off \
@@ -33,14 +33,25 @@ RUN wget https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata \
 
 FROM python-base as build
 
+ENTRYPOINT []
+
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         # deps for installing poetry
         curl \
+        # deps for adding the deadsnakes PPA (the tesseract base image ships Ubuntu 22.04 without Python 3.12)
+        software-properties-common gnupg \
         # deps for building python deps
         build-essential \
         libcurl4-openssl-dev libssl-dev \
-        python3-pip
+    && add-apt-repository -y ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install --no-install-recommends -y \
+        python3.12 python3.12-venv python3.12-dev
 
 ENV OCR_ENABLE_CUDA_GPU=false
 
@@ -53,9 +64,10 @@ COPY ./engine_src/tesseract_env/pyproject.toml ./engine_src/tesseract_env/poetry
 COPY ./vendors /vendors
 COPY ./engine_src/deps_ocr_engines/infrastructure/engines /app/deps_ocr_engines/infrastructure/engines
 
-RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=$POETRY_PATH python3 - \
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=$POETRY_PATH python3.12 - \
     && poetry --version \
     && poetry config virtualenvs.in-project true \
+    && poetry env use python3.12 \
     && poetry install --no-interaction --no-ansi --no-root --only main --no-cache -E tesseract-engine \
     && /app/.venv/bin/pip uninstall --yes opencv-python opencv-python-headless opencv-contrib-python opencv-contrib-python opencv-contrib-python-headless \
     && /app/.venv/bin/pip install --no-cache-dir opencv-contrib-python-headless==4.8.1.78
