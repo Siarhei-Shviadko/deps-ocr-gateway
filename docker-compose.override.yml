@@ -80,53 +80,53 @@ services:
     stdin_open: true
     tty: true
 
-  # aws-textract-engin:
-  #   build:
-  #     context: .
-  #     dockerfile: ./etc/deps-ocr-api-gateway/engines/aws_textract.Dockerfile
-  #     target: develop
-  #     args:
-  #       REPOSITORY_URL: "${REPOSITORY_URL}"
-  #     cache_from:
-  #       - "aws-textract-engin-dev:latest"
-  #   env_file:
-  #     - ./etc/deps-ocr-api-gateway/env/dev.env
-  #     - .env
-  #   networks:
-  #     - deps-network
-  #   volumes:
-  #     - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
-  #     - ./engine_src/engines_tests:/app/engines_tests
-  #     - ./engine_src/poetry.lock:/app/poetry.lock
-  #     - ./engine_src/pyproject.toml:/app/pyproject.toml
-  #     - ./engine_src/engines_setup.cfg:/app/setup.cfg
-  #     - ./vendors:/vendors
-  #   stdin_open: true
-  #   tty: true
-  #
-  # gcp-vision-engin:
-  #   build:
-  #     context: .
-  #     dockerfile: ./etc/deps-ocr-api-gateway/engines/gcp_vision.Dockerfile
-  #     target: develop
-  #     args:
-  #       REPOSITORY_URL: "${REPOSITORY_URL}"
-  #     cache_from:
-  #       - "gcp-vision-engin-dev:latest"
-  #   env_file:
-  #     - ./etc/deps-ocr-api-gateway/env/dev.env
-  #     - .env
-  #   networks:
-  #     - deps-network
-  #   volumes:
-  #     - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
-  #     - ./engine_src/engines_tests:/app/engines_tests
-  #     - ./engine_src/poetry.lock:/app/poetry.lock
-  #     - ./engine_src/pyproject.toml:/app/pyproject.toml
-  #     - ./engine_src/engines_setup.cfg:/app/setup.cfg
-  #     - ./vendors:/vendors
-  #   stdin_open: true
-  #   tty: true
+  aws-textract-engin:
+    build:
+      context: .
+      dockerfile: ./etc/deps-ocr-api-gateway/engines/aws_textract.Dockerfile
+      target: develop
+      args:
+        REPOSITORY_URL: "${REPOSITORY_URL}"
+      cache_from:
+        - "aws-textract-engin-dev:latest"
+    env_file:
+      - ./etc/deps-ocr-api-gateway/env/dev.env
+      - .env
+    networks:
+      - deps-network
+    volumes:
+      - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+      - ./engine_src/engines_tests:/app/engines_tests
+      - ./engine_src/poetry.lock:/app/poetry.lock
+      - ./engine_src/pyproject.toml:/app/pyproject.toml
+      - ./engine_src/engines_setup.cfg:/app/setup.cfg
+      - ./vendors:/vendors
+    stdin_open: true
+    tty: true
+  
+  gcp-vision-engin:
+    build:
+      context: .
+      dockerfile: ./etc/deps-ocr-api-gateway/engines/gcp_vision.Dockerfile
+      target: develop
+      args:
+        REPOSITORY_URL: "${REPOSITORY_URL}"
+      cache_from:
+        - "gcp-vision-engin-dev:latest"
+    env_file:
+      - ./etc/deps-ocr-api-gateway/env/dev.env
+      - .env
+    networks:
+      - deps-network
+    volumes:
+      - ./engine_src/deps_ocr_engines:/app/deps_ocr_engines
+      - ./engine_src/engines_tests:/app/engines_tests
+      - ./engine_src/poetry.lock:/app/poetry.lock
+      - ./engine_src/pyproject.toml:/app/pyproject.toml
+      - ./engine_src/engines_setup.cfg:/app/setup.cfg
+      - ./vendors:/vendors
+    stdin_open: true
+    tty: true
   #
   azure-form-recognizer-engin:
     build:
